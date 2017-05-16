@@ -17,6 +17,7 @@ class Filter extends Component {
           onKeyUp={(evt) => this.handleKeyUp (evt)} />
 
         <ol>
+          <li></li>
         </ol>
       </div>
     );

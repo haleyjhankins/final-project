@@ -9,7 +9,11 @@ class Player extends React.Component{
   render(){
     return(
       <li>
-        <div>Name: {this.props.name} {this.props.lastname} {this.props.team}</div>
+        <div> Name: {this.props.name} {this.props.lastname} </div>
+        <div> Team: {this.props.team}</div>
+        <div> Position: {this.props.position}</div>
+        <div> Birth Date: {this.props.birthdate}</div>
+        <div> Age: {this.props.age}</div>
       </li>
     )
   }
@@ -37,16 +41,22 @@ class Players extends React.Component{
   }
     render(){
       let player = this.state.data.map((x) => {
-        return <Player key={x.player.ID} name={x.player.FirstName} lastname={x.player.LastName} team={x.team.Name}/>
+        return <Player key={x.player.ID} name={x.player.FirstName} lastname={x.player.LastName} team={x.team.Name} position={x.player.Position} birthdate={x.player.BirthDate} age={x.player.Age}/>
       });
 
 
       return (
-        <div>
+        <div className="player">
           <ol>
-            {player}
+            <li>
+              <div className="details">
+              {player}
+              </div>
+            </li>
           </ol>
         </div>
+
+
       );
     }
   }
