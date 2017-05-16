@@ -6,6 +6,7 @@ import Filter from './Filter.js';
 import './index.css';
 import './reset.css';
 import Players from './Players.js';
+import Injuries from './Injuries.js';
 
 ReactDOM.render(
   <App />,
