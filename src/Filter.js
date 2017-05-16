@@ -11,7 +11,7 @@ class Filter extends Component {
       <div className="position-filter">
         <h2>Filter by position</h2>
         <input
-          placeholder="Search By Position"
+          placeholder="Filter By Position"
           value={this.props.inputValue}
           onChange={(evt) => this.props.onInputChange(evt.target.value)}
           onKeyUp={(evt) => this.handleKeyUp (evt)} />

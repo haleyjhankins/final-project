@@ -4,6 +4,7 @@ import App from './App';
 import Query from './Query.js';
 import Filter from './Filter.js';
 import './index.css';
+import './reset.css';
 import Players from './Players.js';
 
 ReactDOM.render(
