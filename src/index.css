@@ -9,4 +9,10 @@ body {
 footer{
   background-color: black;
   color: white;
+  text-align: center;
+}
+
+.footer-name{
+  font-family: sans-serif;
+  padding-bottom: 10px;
 }

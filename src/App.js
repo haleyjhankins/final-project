@@ -13,7 +13,7 @@ class App extends Component {
         <Filter />
         <Players />
         <Injuries />
-        <footer>This app was built with <a href="https://www.mysportsfeeds.com/"><img src="sportsfeeds.png" alt="my sports feeds" /></a></footer>
+        <footer> <p className="footer-name">This app was built with: </p> <a href="https://www.mysportsfeeds.com/"><img src="sportsfeeds.png" alt="my sports feeds" /></a></footer>
       </div>
     );
   }

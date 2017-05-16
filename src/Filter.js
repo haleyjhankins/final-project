@@ -9,7 +9,6 @@ class Filter extends Component {
 
     return (
       <div className="position-filter">
-        <h2>Filter by position</h2>
         <input
           placeholder="Filter By Position"
           value={this.props.inputValue}
