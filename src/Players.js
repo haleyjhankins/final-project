@@ -1,6 +1,8 @@
 import React from 'react';
 import './players.css';
 import $ from 'jquery';
+import Query from './Query.js';
+import Filter from './Filter.js';
 
 
 
@@ -9,7 +11,15 @@ class Player extends React.Component{
   render(){
     return(
       <li>
-        <div> Name: {this.props.name} {this.props.lastname} </div>
+        <div className="query-bar">
+          <input
+            placeholder="Search By Team"
+            value={this.props.inputValue}
+            onChange={(evt) => this.props.onInputChange(evt.target.value)}
+            onKeyUp={(evt) => this.handleKeyUp(evt)} />
+        </div>
+
+        <h2 className="name"> Name: {this.props.name} {this.props.lastname} </h2>
         <div> Team: {this.props.team}</div>
         <div> Position: {this.props.position}</div>
         <div> Birth Date: {this.props.birthdate}</div>
@@ -28,16 +38,11 @@ class Players extends React.Component{
     };
   }
 
-  componentDidMount(){
-    $.ajax({
-      url: `https://www.mysportsfeeds.com/api/feed/sample/pull/mlb/2016-2016-regular/roster_players.json?fordate=20160405&`
-    })
-    .done((data) => {
-      this.setState({
-        data: data.rosterplayers.playerentry
-      })
-    });
 
+  handleKeyUp(evt) {
+    if (evt.keyCode ===13){
+      this.props.onInputComplete();
+    }
   }
     render(){
       let player = this.state.data.map((x) => {

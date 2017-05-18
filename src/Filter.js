@@ -9,6 +9,7 @@ class Filter extends Component {
 
     return (
       <div className="position-filter">
+        <h2>Filter by position</h2>
         <input
           placeholder="Filter By Position"
           value={this.props.inputValue}
@@ -16,7 +17,6 @@ class Filter extends Component {
           onKeyUp={(evt) => this.handleKeyUp (evt)} />
 
         <ol>
-          <li></li>
         </ol>
       </div>
     );

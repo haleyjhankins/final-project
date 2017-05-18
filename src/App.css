@@ -1,0 +1,24 @@
+.players-button{
+  border : 1px solid black;
+  background-color: white;
+  padding : 10px;
+  border-radius: 10px;
+  font-family: sans-serif;
+
+}
+
+.players-button a{
+  text-decoration: none;
+}
+
+.injuries-button {
+  border : 1px solid black;
+  background-color: white;
+  padding : 10px;
+  border-radius: 10px;
+  font-family: sans-serif;
+}
+
+.injuries-button , a {
+  text-decoration: none;
+}
