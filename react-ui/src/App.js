@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import $ from 'jquery';
 import './App.css';
 import Players from './Players';
 import Injuries from './Injuries';
