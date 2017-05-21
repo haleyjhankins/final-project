@@ -70,10 +70,11 @@ class App extends Component {
           onChange={(evt) => this.handleChange(evt)}
           onKeyUp={(evt) => this.handleKeyUp(evt)}
           value={this.state.inputValue} />
+          <div className="table-div">
         <table className="ballpark-list">
           <thead>
             <tr>
-              <th>Name</th>
+              <th>Ballpark Name</th>
               <th>City</th>
               <th>State</th>
             </tr>
@@ -82,6 +83,7 @@ class App extends Component {
             {list}
           </tbody>
         </table>
+        </div>
       </div>
     );
   }

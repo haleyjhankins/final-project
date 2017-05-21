@@ -1,7 +1,21 @@
-.App{
-  height: 200px;
+.App {
+  text-align: center;
+  margin: 0 auto;
+  max-width: 960px;
+  height: 500px;
 }
 
-.field-name{
-  padding-top: 10px;
+.App table {
+  width: 100%;
+}
+
+.table-div{
+  display: inline-block;
+  margin-top: 10px;
+
+}
+
+input{
+  display: block;
+  margin: auto;
 }
