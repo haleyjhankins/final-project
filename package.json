@@ -17,7 +17,6 @@
     "start": "node server/server.js",
     "heroku-postbuild": "cd react-ui/ && npm install --only=dev && npm install && npm run build"
   },
-  "proxy": "http://localhost:5000/",
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
   "main": "index.js",
   "repository": {

@@ -1,73 +1,88 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import $ from 'jquery';
 import './App.css';
-import Players from './Players';
-import Injuries from './Injuries';
-import Query from './Query.js';
-import Filter from './Filter.js';
+import $ from 'jquery';
 
 class App extends Component {
 
-  constructor(){
+  constructor() {
     super();
 
-    this.state= {
-      fullPersonList: [],
-      filteredPersonList: [],
+    this.state = {
+      fullBallParkList: [],
+      filteredBallParkList: [],
       inputValue: ''
     }
   }
 
   componentDidMount() {
+
     $.ajax({
-      url: '/api/player-data'
+      url: '/api/parks'
     })
     .done((data) => {
       this.setState({
-        fullPersonList: data.players
+        fullBallParkList: data.park //data, woo!
       })
+    });
+
+  }
+
+  handleChange(evt) {
+    this.setState({
+      inputValue: evt.target.value
     });
   }
 
   handleKeyUp(evt) {
-    if(evt.keyCode ===13){
+    if (evt.keyCode === 13) {
 
       const filteredList = [];
-      for (let i=0; i < this.state.fullPersonList.length; i++) {
-        let person= this.state.fullPersonList[i];
-        if (person.player.indexOf(this.state.inputValue) > -1) {
-          filteredList.push(person);
+      for (let i = 0; i < this.state.fullBallParkList.length; i++) {
+        let ballpark = this.state.fullBallParkList[i];
+        if (ballpark.parkname.indexOf(this.state.inputValue) > -1) {
+          filteredList.push(ballpark);
         }
       }
 
       this.setState({
         inputValue: '',
-        filteredPersonList: filteredList
+        filteredBallParkList: filteredList
       });
     }
   }
 
 
   render() {
+    let list;
+    if (this.state.filteredBallParkList.length > 0) {
+      list = this.state.filteredBallParkList.map((ballpark) => {
+        return <tr>
+          <td>{ballpark.parkname}</td>
+          <td>{ballpark.city}</td>
+          <td>{ballpark.state}</td>
+        </tr>
+      });
+    }
+
     return (
-      <Router>
-        <div className="App">
-
-
-            <button className="players-button">
-              <Link to="/players">Players  </Link>
-            </button>
-
-            <button className="injuries-button">
-              <Link to="/injuries">Injuries</Link>
-            </button>
-
-          <Route path="/players" component={Players} />
-          <Route path="/injuries" component={Injuries} />
-
-        </div>
-      </Router>
+      <div className="App">
+        <input
+          onChange={(evt) => this.handleChange(evt)}
+          onKeyUp={(evt) => this.handleKeyUp(evt)}
+          value={this.state.inputValue} />
+        <table className="ballpark-list">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>City</th>
+              <th>State</th>
+            </tr>
+          </thead>
+          <tbody>
+            {list}
+          </tbody>
+        </table>
+      </div>
     );
   }
 }
