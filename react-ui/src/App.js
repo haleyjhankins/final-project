@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import $ from 'jquery';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
 
 class App extends Component {
 
