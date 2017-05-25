@@ -9,9 +9,9 @@ const PORT = process.env.PORT || 5000;
 app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
 
 // Answer API requests.
-app.get('/api/parks', function (req, res) {
+app.get('/api/mlbstadiumdata', function (req, res) {
 console.log(__dirname);
-  fs.readFile('./server/parks.csv' , 'utf-8', function(err, data) {
+  fs.readFile('./server/mlbstadiumdata.csv' , 'utf-8', function(err, data) {
 
     const lines = data.split('\n');
     console.log(lines.length);
@@ -21,14 +21,22 @@ console.log(__dirname);
     for(var i = 1; i < lines.length - 1; i++) {
       const line = lines[i].split(',');
       output.push({
-        parkname: line[1],
-        city: line[3],
-        state: line[4],
+        city: line[0],
+        name: line[1],
+        opened: line[2],
+        seatingCapacity: line[3],
+        stadiumDome: line[4],
+        stadiumDomeType: line[5],
+        state:line[6],
+        team:line[7],
+        latitude:line[8],
+        longitude: line[9],
+        location: line[10]
       });
     }
 
     res.send({
-      park: output
+      mlbstadiumdata: output
     });
 
   })

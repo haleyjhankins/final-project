@@ -10,8 +10,8 @@ class App extends Component {
     super();
 
     this.state = {
-      fullBallParkList: [],
-      filteredBallParkList: [],
+      fullStadiumList: [],
+      filteredStadiumList: [],
       inputValue: ''
     }
   }
@@ -19,13 +19,15 @@ class App extends Component {
   componentDidMount() {
 
     $.ajax({
-      url: '/api/parks'
+      url: '/api/mlbstadiumdata'
     })
     .done((data) => {
       this.setState({
-        fullBallParkList: data.park //data, woo!
+        fullStadiumList: data.mlbstadiumdata //data, woo!
       })
+      console.log("data?", data);
     });
+
 
   }
 
@@ -39,16 +41,16 @@ class App extends Component {
     if (evt.keyCode === 13) {
 
       const filteredList = [];
-      for (let i = 0; i < this.state.fullBallParkList.length; i++) {
-        let ballpark = this.state.fullBallParkList[i];
-        if (ballpark.parkname.indexOf(this.state.inputValue) > -1) {
-          filteredList.push(ballpark);
+      for (let i = 0; i < this.state.fullStadiumList.length; i++) {
+        let stadium = this.state.fullStadiumList[i];
+        if (stadium.name.indexOf(this.state.inputValue) > -1) {
+          filteredList.push(stadium);
         }
       }
 
       this.setState({
         inputValue: '',
-        filteredBallParkList: filteredList
+        filteredStadiumList: filteredList
       });
     }
   }
@@ -56,12 +58,22 @@ class App extends Component {
 
   render() {
     let list;
-    if (this.state.filteredBallParkList.length > 0) {
-      list = this.state.filteredBallParkList.map((ballpark) => {
+    if (this.state.filteredStadiumList.length > 0) {
+      list = this.state.filteredStadiumList.map((stadium) => {
         return <tr>
-          <td>{ballpark.parkname}</td>
-          <td>{ballpark.city}</td>
-          <td>{ballpark.state}</td>
+            <td className="stad-name">{stadium.name}</td>
+            <td className="city-name">{stadium.city}</td>
+            <td className="state-name">{stadium.state}</td>
+            <td className="team-name">{stadium.team}</td>
+            <td className="opened-date">{stadium.opened}</td>
+            <td className="latit">{stadium.latitude}</td>
+            <td className="longit">{stadium.longitude}</td>
+            <td className="capass">{stadium.capacity}</td>
+
+
+
+
+
         </tr>
       });
     }
@@ -73,12 +85,17 @@ class App extends Component {
           onKeyUp={(evt) => this.handleKeyUp(evt)}
           value={this.state.inputValue} />
           <div className="table-div">
-        <table className="ballpark-list">
+        <table className="stadium-list">
           <thead>
             <tr>
-              <th>Ballpark Name</th>
-              <th>City</th>
-              <th>State</th>
+              <th className="name">Name</th>
+              <th className="city">City</th>
+              <th className="state">State</th>
+              <th className="team">Team</th>
+              <th className="opened">Opened</th>
+              <th className="lat">Latitude</th>
+              <th className="long">Longitude</th>
+              <th className="cap">Capacity</th>
             </tr>
           </thead>
           <tbody>
