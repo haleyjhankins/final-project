@@ -31,7 +31,7 @@ console.log(__dirname);
         team:line[7],
         latitude:line[8],
         longitude: line[9],
-        location: line[10]
+        image: line[10],
       });
     }
 

@@ -43,7 +43,7 @@ class App extends Component {
       const filteredList = [];
       for (let i = 0; i < this.state.fullStadiumList.length; i++) {
         let stadium = this.state.fullStadiumList[i];
-        if (stadium.name.indexOf(this.state.inputValue) > -1) {
+        if (stadium.team.indexOf(this.state.inputValue) > -1) {
           filteredList.push(stadium);
         }
       }
@@ -68,7 +68,8 @@ class App extends Component {
             <td className="opened-date">{stadium.opened}</td>
             <td className="latit">{stadium.latitude}</td>
             <td className="longit">{stadium.longitude}</td>
-            <td className="capass">{stadium.capacity}</td>
+            <td className="capass">{stadium.seatingCapacity}</td>
+            <td className="stadimg">{stadium.image}</td>
 
 
 
@@ -96,6 +97,7 @@ class App extends Component {
               <th className="lat">Latitude</th>
               <th className="long">Longitude</th>
               <th className="cap">Capacity</th>
+              <th className="image"></th>
             </tr>
           </thead>
           <tbody>
