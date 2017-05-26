@@ -21,6 +21,7 @@ nav ul{
 
 nav li{
   float: left;
+
 }
 
 nav a {
@@ -31,6 +32,7 @@ nav a {
   color: #FFF;
   text-decoration: none;
   line-height: 100px;
+
  }
 
 
@@ -41,18 +43,11 @@ nav a {
     background-size: 200px;
     color: transparent;
     float: left;
-    height: 200px;
-    width: 300px;
-    margin: 0;
+    height: 100px;
+    width: 100px;
+    margin-left: 50px;
+    margin-top: 10px;
   }
-
-
-.logo{
-  height: 100px;
-  width: 100px;
-  margin-left: 50px;
-  margin-top: 10px;
-}
 
 
 /*Section*/
@@ -91,7 +86,7 @@ footer img{
 .sentence{
   font-size: 3.7em;
   color: #FFF;
-  font-family: "flood-std",sans-serif;
+  font-family: sans-serif;
   font-style: normal;
   font-weight: 400;
   margin: 0 auto;
@@ -166,4 +161,16 @@ footer img{
 	30% { opacity: 0; -ms-transform: translateY(0px); }
 	80% { opacity: 0; }
 	100% { opacity: 0; }
+}
+
+.instructions{
+  font-size: 1em;
+  color:black;
+  font-family: sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  margin: 0 auto;
+  /*padding-top: 150px;*/
+  text-align: center;
+  /*width: 70%;*/
 }

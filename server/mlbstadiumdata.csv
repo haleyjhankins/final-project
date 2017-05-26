@@ -1,5 +1,5 @@
-City,Name,Opened,SeatingCapacity,StadiumDome,StadiumDomeType,State,Team,lat,lng,img
-Anaheim,Angel Stadium of Anaheim,1966,45477,False,, California,Los Angeles Angels of Anaheim,33.8002777778,-117.882777778,https://www.flickr.com/photos/chicanerii/4058216528
+City,Name,Opened,SeatingCapacity,StadiumDome,StadiumDomeType,State,Team,lat,lng
+Anaheim,Angel Stadium of Anaheim,1966,45477,False,, California,Los Angeles Angels of Anaheim,33.8002777778,-117.882777778
 San Francisco,AT&T Park,2000,41915,False,, California,San Francisco Giants,37.7786111111,-122.389166667
 St. Louis,Busch Stadium,2006,45529,False,, Missouri,St. Louis Cardinals,38.6225,-90.1930555556
 Phoenix,Chase Field,1998,48686,True,retractable, Arizona,Arizona Diamondbacks,33.4452777778,-112.066944444

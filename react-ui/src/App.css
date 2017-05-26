@@ -2,7 +2,7 @@
   text-align: center;
   margin: 0 auto;
   max-width: 960px;
-  height: 300px;
+  height: 400px;
   font-family: sans-serif;
 }
 
@@ -58,7 +58,8 @@
 input{
   display: block;
   margin: auto;
-  margin-top: 10px;
+  margin-top: 30px;
+  margin-bottom: 10px;
 }
 
 .stad-name{
