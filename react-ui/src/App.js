@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import $ from 'jquery';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+// import GoogleMaps from './GoogleMaps.js'
 
 
 class App extends Component {
@@ -69,7 +70,6 @@ class App extends Component {
             <td className="latit">{stadium.latitude}</td>
             <td className="longit">{stadium.longitude}</td>
             <td className="capass">{stadium.seatingCapacity}</td>
-            <td className="stadimg">{stadium.image}</td>
 
 
 
@@ -81,7 +81,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <input
+        <input placeholder="Team"
           onChange={(evt) => this.handleChange(evt)}
           onKeyUp={(evt) => this.handleKeyUp(evt)}
           value={this.state.inputValue} />
@@ -97,7 +97,6 @@ class App extends Component {
               <th className="lat">Latitude</th>
               <th className="long">Longitude</th>
               <th className="cap">Capacity</th>
-              <th className="image"></th>
             </tr>
           </thead>
           <tbody>

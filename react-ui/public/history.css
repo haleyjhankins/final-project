@@ -35,8 +35,6 @@ nav a {
 
  }
 
-
-
   .logo {
     background-image: url('');
     background-repeat: no-repeat;
@@ -47,4 +45,45 @@ nav a {
     width: 100px;
     margin-left: 50px;
     margin-top: 10px;
+  }
+
+  .image{
+    text-align: center;
+    background-image: url('ruth.jpg');
+    background-size: cover;
+    margin: 0 auto;
+    height: 600px;
+    font-family: sans-serif;
+    padding-top: 200px;
+    position: relative;
+    z-index: 1;
+
+  }
+
+  .image:after {
+    content: '';
+    background-color: rgba(0, 0, 0, .5);
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+
+  .team-histories{
+    height: 500px;
+    margin: 20px;
+
+  }
+
+  .team-histories p{
+    text-align: center;
+    font-size: 2em;
+  }
+
+
+  a{
+    text-decoration: none
+    
   }

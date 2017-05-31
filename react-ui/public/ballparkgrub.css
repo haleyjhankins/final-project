@@ -73,3 +73,8 @@ nav a {
     bottom: 0;
     z-index: -1;
   }
+
+  .team-grub{
+    max-width: 960px;
+    height: 400px;
+  }
