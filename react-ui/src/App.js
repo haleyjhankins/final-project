@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import $ from 'jquery';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-// import GoogleMaps from './GoogleMaps.js'
+import GoogleMaps from './GoogleMaps.js'
 
 
 class App extends Component {
@@ -67,14 +67,17 @@ class App extends Component {
             <td className="state-name">{stadium.state}</td>
             <td className="team-name">{stadium.team}</td>
             <td className="opened-date">{stadium.opened}</td>
-            <td className="latit">{stadium.latitude}</td>
-            <td className="longit">{stadium.longitude}</td>
             <td className="capass">{stadium.seatingCapacity}</td>
+        </tr>
+      });
+    }
 
-
-
-
-
+    let maps;
+    if(this.state.filteredStadiumList.length >0){
+      maps = this.state.filteredStadiumList.map((stadium) => {
+        return <tr>
+          <td className="latit">{stadium.latitude}</td>
+          <td className="longit">{stadium.longitude}</td>
         </tr>
       });
     }
@@ -94,13 +97,12 @@ class App extends Component {
               <th className="state">State</th>
               <th className="team">Team</th>
               <th className="opened">Opened</th>
-              <th className="lat">Latitude</th>
-              <th className="long">Longitude</th>
               <th className="cap">Capacity</th>
             </tr>
           </thead>
           <tbody>
             {list}
+            {maps}
           </tbody>
         </table>
         </div>

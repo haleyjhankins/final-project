@@ -73,8 +73,9 @@ nav a {
 
   .team-histories{
     height: 500px;
-    margin: 20px;
-
+    margin: 0 auto;
+    width: 75%;
+    display: block;
   }
 
   .team-histories p{
@@ -83,7 +84,15 @@ nav a {
   }
 
 
-  a{
-    text-decoration: none
-    
+.team-histories button{
+  font-size: 15px;
+  width: 250px;
+}
+
+  .team-histories a{
+    text-decoration: none;
+    margin: 50px;
+    float: left;
+
+
   }
