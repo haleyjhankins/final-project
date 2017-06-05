@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import $ from 'jquery';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import GoogleMaps from './GoogleMaps.js'
+import GoogleMapsChange from './GoogleMapsChange.js'
 
 
 class App extends Component {
@@ -28,8 +28,6 @@ class App extends Component {
       })
       console.log("data?", data);
     });
-
-
   }
 
   handleChange(evt) {
@@ -44,7 +42,7 @@ class App extends Component {
       const filteredList = [];
       for (let i = 0; i < this.state.fullStadiumList.length; i++) {
         let stadium = this.state.fullStadiumList[i];
-        if (stadium.team.indexOf(this.state.inputValue) > -1) {
+        if (stadium.state.indexOf(this.state.inputValue) > -1) {
           filteredList.push(stadium);
         }
       }
@@ -72,19 +70,9 @@ class App extends Component {
       });
     }
 
-    let maps;
-    if(this.state.filteredStadiumList.length >0){
-      maps = this.state.filteredStadiumList.map((stadium) => {
-        return <tr>
-          <td className="latit">{stadium.latitude}</td>
-          <td className="longit">{stadium.longitude}</td>
-        </tr>
-      });
-    }
-
     return (
       <div className="App">
-        <input placeholder="Team"
+        <input placeholder="State"
           onChange={(evt) => this.handleChange(evt)}
           onKeyUp={(evt) => this.handleKeyUp(evt)}
           value={this.state.inputValue} />
@@ -102,9 +90,11 @@ class App extends Component {
           </thead>
           <tbody>
             {list}
-            {maps}
           </tbody>
         </table>
+        <div className="Map">
+          <GoogleMapsChange />
+        </div>
         </div>
       </div>
     );

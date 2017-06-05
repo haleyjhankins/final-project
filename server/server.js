@@ -25,13 +25,10 @@ console.log(__dirname);
         name: line[1],
         opened: line[2],
         seatingCapacity: line[3],
-        stadiumDome: line[4],
-        stadiumDomeType: line[5],
         state:line[6],
         team:line[7],
         latitude:line[8],
         longitude: line[9],
-        image: line[10],
       });
     }
 

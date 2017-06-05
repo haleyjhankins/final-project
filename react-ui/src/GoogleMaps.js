@@ -6,8 +6,8 @@ class GoogleMaps extends React.Component {
       super();
       this.state={
         locations: [
-          {lat:-34.397, lng: 150.644 },
-          {lat: -34.397, lng: 150.842 }
+          {lat:95.7129, lng: 39.8282 },
+          {lat: 95.7129, lng: 39.8282 }
 
         ]
       }
@@ -15,8 +15,8 @@ class GoogleMaps extends React.Component {
 
   componentDidMount() {
     this.googleMap = new window.google.maps.Map(this.map, {
-      center: { lat: -34.397, lng: 150.644 },
-      zoom: 8
+      center: { lat: 37.0902, lng: -95.7129 },
+      zoom: 5
     });
 
     this.state.locations.forEach((loc) => {
@@ -31,10 +31,10 @@ class GoogleMaps extends React.Component {
   }
 
   render() {
+
     return (
       <div>
-        <h1>Test</h1>
-        <div ref={(map) => { this.map = map; }} style={{width: '50%', height: '400px'}}></div>
+        <div ref={(map) => { this.map = map; }} style={{width: '100%', height: '400px'}}></div>
       </div>
     );
   }
