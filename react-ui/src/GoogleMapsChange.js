@@ -1,4 +1,4 @@
-import React from 'react';
+ import React from 'react';
 
 class GoogleMapsChange extends React.Component {
 
@@ -43,7 +43,7 @@ class GoogleMapsChange extends React.Component {
 
         <div style={{width: '40%', float: 'left'}}>
           <button onClick={() => this.handleClearMarkers()}>clear markers</button>
-        
+
 
         </div>
       </div>
