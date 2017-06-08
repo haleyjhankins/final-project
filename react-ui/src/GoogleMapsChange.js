@@ -8,8 +8,8 @@ class App extends Component {
 
     this.state = {
       locations: [
-        { name: 'Houston', lat: 65, lng: 23 },
-        { name: 'Dallas', lat: 45, lng: 45 },
+        { name: 'Rangers', lat: 65, lng: 23 },
+        { name: 'Astros', lat: 45, lng: 45 },
         { name: 'Zimbabwe', lat: 100, lng: -2 }
       ],
       selectedLat: undefined,

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import $ from 'jquery';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import GoogleMapsChange from './GoogleMapsChange.js'
+import wrapper from './GoogleMapsChange.js'
 
 
 class App extends Component {
@@ -45,6 +45,7 @@ class App extends Component {
         if (stadium.state.indexOf(this.state.inputValue) > -1) {
           filteredList.push(stadium);
         }
+        console.log('what?', stadium)
       }
 
       this.setState({
@@ -93,8 +94,8 @@ class App extends Component {
           </tbody>
         </table>
         <div className="Map">
-    
-          <GoogleMapsChange />
+
+        
         </div>
         </div>
       </div>
