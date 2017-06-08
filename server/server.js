@@ -40,9 +40,7 @@ console.log(__dirname);
 
 });
 
-// app.get('*', function(request, response) {
-//   response.sendfile('/App.js');
-// });
+
 
 app.listen(PORT, function () {
   console.log(`Listening on port ${PORT}`);

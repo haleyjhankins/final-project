@@ -1,56 +1,65 @@
- import React from 'react';
+import React, { Component } from 'react';
+import './App.css';
 
-class GoogleMapsChange extends React.Component {
+class App extends Component {
 
   constructor() {
     super();
 
-    this.markers = [];
+    this.state = {
+      locations: [
+        { name: 'Houston', lat: 65, lng: 23 },
+        { name: 'Dallas', lat: 45, lng: 45 },
+        { name: 'Zimbabwe', lat: 100, lng: -2 }
+      ],
+      selectedLat: undefined,
+      selectedLng: undefined
+    };
   }
 
-  componentDidMount() {
-    this.googleMap = new window.google.maps.Map(this.map, {
-      center: { lat: 32.7767, lng: -96.7970 },
-      zoom: 5
+  handleClick(loc) {
+    this.setState({
+      selectedLat: loc.lat,
+      selectedLng: loc.lng
     });
   }
 
-  handleClick(lat, lng) {
-    var marker = new window.google.maps.Marker({
-      position: { lat: lat, lng: lng },
-      map: this.googleMap,
-      title: 'Hover over the marker to see this text!'
-    });
-    this.markers.push(marker);
-  }
+  handleKeyUp(evt) {
+    console.log(evt.keyCode);
+    if (evt.keyCode === 13) {
+      console.log(evt.target.value);
 
-  handleClearMarkers() {
-    for (let i = 0; i < this.markers.length; i++) {
-      this.markers[i].setMap(null);
+      var foundThing = this.state.locations.find((loc) => evt.target.value === loc.name);
+      if (foundThing !== undefined) {
+        //place a marker
+        //foundThing.lat and foundThing.lng
+      }
     }
-    this.markers = [];
-  }
-
-  handleCenterpointClick(lat, lng) {
-    this.googleMap.setCenter({ lat: lat, lng: lng });
   }
 
   render() {
+
+    const items = this.state.locations.map((loc, i) => {
+      return <li key={loc.name + i} onClick={() => this.handleClick(loc)}>{loc.name}</li>
+    });
+
+
     return (
-      <div className="google-maps-change">
+      <div className="App">
 
-        <div ref={(map) => { this.map = map; }} style={{width: '50%', height: '400px', float: 'left'}}></div>
+        <input onKeyUp={(evt) => this.handleKeyUp(evt)} />
 
-        <div style={{width: '40%', float: 'left'}}>
-          <button onClick={() => this.handleClearMarkers()}>clear markers</button>
+        <div>Selected lat: {this.state.selectedLat}</div>
+        <div>Selected lng: {this.state.selectedLng}</div>
+
+        <ul>
+          {items}
+        </ul>
 
 
-        </div>
       </div>
     );
   }
-
-
 }
 
-export default GoogleMapsChange;
+export default App;
