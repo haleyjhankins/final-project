@@ -17,6 +17,7 @@ class App extends Component {
     };
   }
 
+
   handleClick(loc) {
     this.setState({
       selectedLat: loc.lat,
@@ -34,6 +35,7 @@ class App extends Component {
         //place a marker
         //foundThing.lat and foundThing.lng
       }
+
     }
   }
 
@@ -47,7 +49,7 @@ class App extends Component {
     return (
       <div className="App">
 
-        <input onKeyUp={(evt) => this.handleKeyUp(evt)} />
+
 
         <div>Selected lat: {this.state.selectedLat}</div>
         <div>Selected lng: {this.state.selectedLng}</div>

@@ -45,7 +45,6 @@ class App extends Component {
         if (stadium.state.indexOf(this.state.inputValue) > -1) {
           filteredList.push(stadium);
         }
-
       }
 
       this.setState({
@@ -67,13 +66,9 @@ class App extends Component {
             <td className="team-name">{stadium.team}</td>
             <td className="opened-date">{stadium.opened}</td>
             <td className="capass">{stadium.seatingCapacity}</td>
-            <td className="lat">{stadium.latitude}</td>
-            <td className="lng">{stadium.longitude}</td>
         </tr>
       });
-        console.log('stuff?',list);
     }
-
 
     return (
       <div className="App">
@@ -95,11 +90,11 @@ class App extends Component {
           </thead>
           <tbody>
             {list}
-            {GoogleMapsChange}
           </tbody>
         </table>
-        <div className="google-maps-change">
-          <GoogleMapsChange   />
+        <div className="Map">
+    
+          <GoogleMapsChange />
         </div>
         </div>
       </div>
