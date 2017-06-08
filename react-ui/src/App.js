@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import $ from 'jquery';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import wrapper from './GoogleMapsChange.js'
 
 
 class App extends Component {
@@ -94,8 +93,6 @@ class App extends Component {
           </tbody>
         </table>
         <div className="Map">
-
-        
         </div>
         </div>
       </div>
