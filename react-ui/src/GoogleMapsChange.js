@@ -1,67 +1,52 @@
-import React, { Component } from 'react';
-import './App.css';
+import React from 'react';
 
-class App extends Component {
+class GoogleMaps extends React.Component {
 
   constructor() {
     super();
-
     this.state = {
       locations: [
-        { name: 'Rangers', lat: 65, lng: 23 },
-        { name: 'Astros', lat: 45, lng: 45 },
-        { name: 'Zimbabwe', lat: 100, lng: -2 }
-      ],
-      selectedLat: undefined,
-      selectedLng: undefined
-    };
-  }
-
-
-  handleClick(loc) {
-    this.setState({
-      selectedLat: loc.lat,
-      selectedLng: loc.lng
-    });
-  }
-
-  handleKeyUp(evt) {
-    console.log(evt.keyCode);
-    if (evt.keyCode === 13) {
-      console.log(evt.target.value);
-
-      var foundThing = this.state.locations.find((loc) => evt.target.value === loc.name);
-      if (foundThing !== undefined) {
-        //place a marker
-        //foundThing.lat and foundThing.lng
-      }
-
+        { lat: -34.397, lng: 150.644 },
+        { lat: -34.297, lng: 150.842 }
+      ]
     }
   }
 
-  render() {
-
-    const items = this.state.locations.map((loc, i) => {
-      return <li key={loc.name + i} onClick={() => this.handleClick(loc)}>{loc.name}</li>
+  componentDidMount() {
+    this.googleMap = new window.google.maps.Map(this.map, {
+      center: { lat: 39.8282, lng: -98.5795 },
+      zoom: 8
     });
 
+    //Put markers in based on state
+    this.state.locations.forEach((loc) => {
+      var marker = new window.google.maps.Marker({
+        position: { lat: loc.lat, lng: loc.lng },
+        map: this.googleMap,
+        title: 'Hover over the marker to see this text!'
+      });
 
+    });
+
+    //Or hard-code the lat/long
+    var marker = new window.google.maps.Marker({
+      position: { lat: -34.397, lng: 150.944 },
+      map: this.googleMap,
+      title: 'Hover over the marker to see this text!'
+    });
+
+  }
+
+  render() {
     return (
-      <div className="App">
+      <div>
+        <h1>Google maps example</h1>
 
-
-
-        <div>Selected lat: {this.state.selectedLat}</div>
-        <div>Selected lng: {this.state.selectedLng}</div>
-
-        <ul>
-          {items}
-        </ul>
-
-
+        <div ref={(map) => { this.map = map; }} style={{width: '50%', height: '400px'}}></div>
       </div>
     );
   }
+
 }
 
-export default App;
+export default GoogleMaps;
