@@ -31,42 +31,49 @@ class App extends Component {
   }
 
   handleChange(evt) {
+    const filteredList = [];
+    for (let i = 0; i < this.state.fullStadiumList.length; i++) {
+      let stadium = this.state.fullStadiumList[i];
+      if (stadium.state.indexOf(this.state.inputValue) > -1) {
+        filteredList.push(stadium);
+      }
+    }
     this.setState({
-      inputValue: evt.target.value
+      inputValue: evt.target.value,
+      filteredStadiumList: filteredList
+
     });
+
   }
 
   handleKeyUp(evt) {
     if (evt.keyCode === 13) {
-
-      const filteredList = [];
-      for (let i = 0; i < this.state.fullStadiumList.length; i++) {
-        let stadium = this.state.fullStadiumList[i];
-        if (stadium.state.indexOf(this.state.inputValue) > -1) {
-          filteredList.push(stadium);
-        }
-        console.log('what?', stadium)
-      }
-
       this.setState({
         inputValue: '',
-        filteredStadiumList: filteredList
       });
+
+
+      }
     }
-  }
+
+
 
 
   render() {
+
+    console.log('filtered list in render', this.state.filteredStadiumList);
     let list;
     if (this.state.filteredStadiumList.length > 0) {
       list = this.state.filteredStadiumList.map((stadium) => {
-        return <tr>
-            <td className="stad-name">{stadium.name}</td>
-            <td className="city-name">{stadium.city}</td>
-            <td className="state-name">{stadium.state}</td>
-            <td className="team-name">{stadium.team}</td>
-            <td className="opened-date">{stadium.opened}</td>
-            <td className="capass">{stadium.seatingCapacity}</td>
+        return <tr key={stadium.latitude}>
+            <td  className="stad-name">{stadium.name}</td>
+            <td  className="city-name">{stadium.city}</td>
+            <td  className="state-name">{stadium.state}</td>
+            <td  className="team-name">{stadium.team}</td>
+            <td  className="opened-date">{stadium.opened}</td>
+            <td  className="capass">{stadium.seatingCapacity}</td>
+            <td  className="latitude">{stadium.latitude}</td>
+            <td  className="longitude">{stadium.longitude}</td>
         </tr>
       });
     }
@@ -93,9 +100,8 @@ class App extends Component {
             {list}
           </tbody>
         </table>
-        <div className="Map">
-        <GoogleMaps />
-        </div>
+        <GoogleMaps filteredStadiumList={this.state.filteredStadiumList} />
+
         </div>
       </div>
     );
