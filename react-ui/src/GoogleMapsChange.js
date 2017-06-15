@@ -31,7 +31,7 @@ class GoogleMaps extends React.Component {
     var marker = new window.google.maps.Marker({
       position: {lat:parseInt(loc.latitude), lng:parseInt(loc.longitude) },
       map: this.googleMap,
-      title: 'This where the park at!'
+      title: 'Play Ball!'
 
     });
      marker.setMap(this.map);

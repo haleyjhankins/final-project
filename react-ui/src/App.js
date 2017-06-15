@@ -31,16 +31,10 @@ class App extends Component {
   }
 
   handleChange(evt) {
-    const filteredList = [];
-    for (let i = 0; i < this.state.fullStadiumList.length; i++) {
-      let stadium = this.state.fullStadiumList[i];
-      if (stadium.state.indexOf(this.state.inputValue) > -1) {
-        filteredList.push(stadium);
-      }
-    }
+
     this.setState({
       inputValue: evt.target.value,
-      filteredStadiumList: filteredList
+
 
     });
 
@@ -48,10 +42,17 @@ class App extends Component {
 
   handleKeyUp(evt) {
     if (evt.keyCode === 13) {
+      const filteredList = [];
+      for (let i = 0; i < this.state.fullStadiumList.length; i++) {
+        let stadium = this.state.fullStadiumList[i];
+        if (stadium.state.indexOf(this.state.inputValue) > -1) {
+          filteredList.push(stadium);
+        }
+      }
       this.setState({
         inputValue: '',
+        filteredStadiumList: filteredList
       });
-
 
       }
     }
@@ -72,8 +73,6 @@ class App extends Component {
             <td  className="team-name">{stadium.team}</td>
             <td  className="opened-date">{stadium.opened}</td>
             <td  className="capass">{stadium.seatingCapacity}</td>
-            <td  className="latitude">{stadium.latitude}</td>
-            <td  className="longitude">{stadium.longitude}</td>
         </tr>
       });
     }
