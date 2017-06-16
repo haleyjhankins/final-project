@@ -17,38 +17,54 @@ class App extends Component {
     }
   }
 
-  componentDidMount() {
-
-    $.ajax({
-      url: '/api/mlbstadiumdata'
-    })
-    .done((data) => {
-      this.setState({
-        fullStadiumList: data.mlbstadiumdata //data, woo!
-      })
-      console.log("data?", data);
+  clearMarkers(){
+    this.setState({
+      fullStadiumList: this.state.fullStadiumList,
+      filteredStadiumList: [],
+      inputValue: ''
     });
+  }
+
+  componentDidMount() {
+    //using fetch:
+    fetch('/api/mlbstadiumdata')
+      .then((response)=> response.json())
+      .then((data) => {
+        this.setState({
+          fullStadiumList:data.mlbstadiumdata
+        })
+      });
+
+    // $.ajax({
+    //   url: '/api/mlbstadiumdata'
+    // })
+    // .done((data) => {
+    //   this.setState({
+    //     fullStadiumList: data.mlbstadiumdata //data, woo!
+    //   })
+    //   console.log("data?", data);
+    // });
   }
 
   handleChange(evt) {
 
     this.setState({
       inputValue: evt.target.value,
-
-
     });
-
   }
 
   handleKeyUp(evt) {
     if (evt.keyCode === 13) {
-      const filteredList = [];
-      for (let i = 0; i < this.state.fullStadiumList.length; i++) {
-        let stadium = this.state.fullStadiumList[i];
-        if (stadium.state.indexOf(this.state.inputValue) > -1) {
-          filteredList.push(stadium);
-        }
-      }
+      console.log(this.state.inputValue);
+      const filteredList = this.state.fullStadiumList.filter((stadium) => {
+        return stadium.state.toLowerCase().trim() == this.state.inputValue.toLowerCase();
+      });
+      // for (let i = 0; i < this.state.fullStadiumList.length; i++) {
+      //   let stadium = this.state.fullStadiumList[i];
+      //   if (stadium.state.indexOf(this.state.inputValue) > -1) {
+      //     filteredList.push(stadium);
+      //   }
+      // }
       this.setState({
         inputValue: '',
         filteredStadiumList: filteredList
@@ -56,6 +72,7 @@ class App extends Component {
 
       }
     }
+
 
 
 
@@ -83,6 +100,7 @@ class App extends Component {
           onChange={(evt) => this.handleChange(evt)}
           onKeyUp={(evt) => this.handleKeyUp(evt)}
           value={this.state.inputValue} />
+
           <div className="table-div">
         <table className="stadium-list">
           <thead>
@@ -99,9 +117,10 @@ class App extends Component {
             {list}
           </tbody>
         </table>
-        <GoogleMaps filteredStadiumList={this.state.filteredStadiumList} />
 
         </div>
+        <GoogleMaps filteredStadiumList={this.state.filteredStadiumList} clearMarkers={() => {this.clearMarkers()}} />
+
       </div>
     );
   }

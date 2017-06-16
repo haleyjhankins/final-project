@@ -2,7 +2,7 @@
   text-align: center;
   margin: 0 auto;
   max-width: 960px;
-  height: 600px;
+  height: 800px;
   font-family: sans-serif;
 }
 
@@ -86,14 +86,7 @@ padding: 10px;
 padding: 10px;
 }
 
-.latit{
-padding: 10px;
-}
 
 .capass{
   padding: 10px;
-}
-
-.Map {
-  
 }

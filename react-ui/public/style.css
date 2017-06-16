@@ -178,6 +178,10 @@ nav a {
   text-align: center;
 }
 
+.instructions h3{
+  font-size: 15px;
+}
+
 footer img{
   width: 150px;
 }

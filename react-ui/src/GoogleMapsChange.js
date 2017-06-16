@@ -2,15 +2,10 @@ import React from 'react';
 
 class GoogleMaps extends React.Component {
 
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     locations: [
-  //       { lat: -34.397, lng: 150.644 },
-  //       { lat: -34.297, lng: 150.842 }
-  //     ]
-  //   }
-  // }
+  constructor(){
+    super();
+    this.currentMarkers = [];
+  }
 
   componentDidMount() {
     this.googleMap = new window.google.maps.Map(this.map, {
@@ -18,28 +13,33 @@ class GoogleMaps extends React.Component {
       zoom: 4
     });
 
-
-
-
-
-
   }
   //Put markers in based on state
   loadMarkers(){
+    let googleMap = this.googleMap;
+    this.currentMarkers.forEach((marker) => {
+      marker.setMap(null);
+    });
+    this.currentMarkers = [];
+    let currentMarkers = this.currentMarkers;
+
   this.props.filteredStadiumList.forEach((loc) => {
-    console.log(loc);
+    // console.log(loc);
     var marker = new window.google.maps.Marker({
-      position: {lat:parseInt(loc.latitude), lng:parseInt(loc.longitude) },
-      map: this.googleMap,
+      position: {lat:parseFloat(loc.latitude), lng:parseFloat(loc.longitude) },
+      map: googleMap,
       title: 'Play Ball!'
 
     });
-     marker.setMap(this.map);
+    currentMarkers.push(marker);
+    //  marker.setMap(this.map);
 
   });
 
   console.log(this.props);
 }
+
+
 
   render() {
     this.loadMarkers();
@@ -49,6 +49,9 @@ class GoogleMaps extends React.Component {
         <h1>Ballpark Finder</h1>
 
         <div ref={(map) => { this.map = map; }} style={{width: '100%', height: '400px'}}></div>
+        <button onClick={this.props.clearMarkers}>clear markers</button>
+
+
       </div>
     );
   }
