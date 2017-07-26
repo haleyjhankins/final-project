@@ -27,6 +27,7 @@ nav li{
 nav a {
   font-family: Helvetica, Verdana, sans-serif;
   margin: 25px;
+  margin-right: 100px;
   padding-top: 50px;
   text-transform: uppercase;
   color: #FFF;
@@ -43,7 +44,7 @@ nav a {
     float: left;
     height: 100px;
     width: 100px;
-    margin-left: 50px;
+    margin-left: 100px;
     margin-top: 10px;
   }
 
