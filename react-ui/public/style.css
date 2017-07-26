@@ -27,13 +27,16 @@ nav li{
 nav a {
   font-family: Helvetica, Verdana, sans-serif;
   margin: 25px;
-  margin-right: 100px;
   padding-top: 50px;
   text-transform: uppercase;
   color: #FFF;
   text-decoration: none;
   line-height: 100px;
 
+ }
+
+ nav #ballparks{
+  margin-right: 100px;
  }
 
   .logo {
