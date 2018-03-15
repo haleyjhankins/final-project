@@ -299,17 +299,6 @@ footer p{
     max-height: 100px;
   }
 
-  nav ul {
-    font-size: .2em;
-    margin-top: -50px;
-    display: inline-block;
-  }
-
-  nav #ballparks{
-   margin-right: 12px;
-   text-align: center;
-   overflow: inherit;
-  }
 
   .instructions{
     font-size: 1em;
